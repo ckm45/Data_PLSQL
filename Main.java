@@ -10,12 +10,14 @@ public class Main {
         SqlFunction sqlfunction = new SqlFunction();
         Connection conn = ConnectJDBC.getConnection();
         //JDBC 연결 
-       
+        //customer.makeAccountMgrCounts();
+       // customer.printAccountMgrCounts();
+      
         sqlfunction.makeEmp();
         //emp 테이블 정보를 객체 및 emplist에 저장
         sqlfunction.makeBonus();
         //bonus를 계산한 후 넣어주는 쿼리가 들어있는 메소드
-        
+       
 //      실행 후 현재 시작 측정
       long endTime = System.currentTimeMillis();
 

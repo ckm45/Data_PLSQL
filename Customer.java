@@ -1,7 +1,7 @@
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,9 +13,10 @@ public class Customer {
         String query = "SELECT ACCOUNT_MGR FROM CUSTOMER";
         //customer 테이블 account_mgr 데이터를 가져온다.
         try (
-
-                PreparedStatement pstmt = conn.prepareStatement(query);
-                ResultSet rs = pstmt.executeQuery();) {
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                ) {
+            //rs.setFetchSize(10);
             while (rs.next()) {
                 int accountMgr = rs.getInt("ACCOUNT_MGR");
                 Integer count = accountMgrCounts.get(accountMgr);
